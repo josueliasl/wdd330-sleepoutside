@@ -8,11 +8,11 @@ export function qs(selector, parent = document) {
 // retrieve data from localstorage
 export function getLocalStorage(key) {
   const storedData = localStorage.getItem(key);
-
+  
   // If storedData is null (key doesn't exist), return an empty array.
   // Otherwise, parse and return the data.
   if (storedData) {
-    return JSON.parse(storedData);
+    return JSON.parse(storedData); 
   }
   return []; // <-- FIX: Return an empty array instead of null
 }
