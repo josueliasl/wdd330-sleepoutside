@@ -7,7 +7,14 @@ export function qs(selector, parent = document) {
 
 // retrieve data from localstorage
 export function getLocalStorage(key) {
-  return JSON.parse(localStorage.getItem(key));
+  const storedData = localStorage.getItem(key);
+
+  // If storedData is null (key doesn't exist), return an empty array.
+  // Otherwise, parse and return the data.
+  if (storedData) {
+    return JSON.parse(storedData);
+  }
+  return []; // <-- FIX: Return an empty array instead of null
 }
 // save data to local storage
 export function setLocalStorage(key, data) {
@@ -21,3 +28,4 @@ export function setClick(selector, callback) {
   });
   qs(selector).addEventListener("click", callback);
 }
+
